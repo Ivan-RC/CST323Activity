@@ -1,0 +1,29 @@
+<!--
+Ivan Rivas & Anthony Clayton
+10/23/2021
+CST-339-TR900A
+Milestone 5
+!-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+											layout:decorate="layouts/defaultTemplate">
+	<head>
+		<title>Confirm Blog Deletion Page</title>
+	</head>
+	<body>
+	<div layout:fragment="content">
+	
+	<blockquote class="blockquote">
+		<p class="lead">
+		Are you sure you would like to delete blog with title of "<text th:text="${blogModel.title}">default</text>" and description of "<text th:text="${blogModel.description}">default</text>"?
+		</p>
+	<form th:action="@{/blog/viewMine}" method="GET">
+		<button type="submit" style="background-color: deepskyblue;">No</button>
+	</form>
+	<form th:action="@{/blog/doRemove}" th:object="${blogModel}" method="POST">
+		<input type="hidden" th:attr="name='id'" th:value="${blogModel.id}"/>
+		<button type="submit" style="background-color: red">Yes</button>
+	</form>
+	</blockquote>
+	</div>
+	</body>
+</html>

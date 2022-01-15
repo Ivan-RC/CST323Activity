@@ -1,0 +1,51 @@
+<!--
+Ivan Rivas & Anthony Clayton
+10/23/2021
+CST-339-TR900A
+Milestone 5
+!-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+											layout:decorate="layouts/defaultTemplate">
+
+	<head>
+		<title>Your Blogs</title>
+	</head>
+	<body>
+	<div layout:fragment="content">
+<table style="width:50%">
+	<thead>
+		<tr>
+			<th style="text-align:center"></th>
+			<th style="text-align:center">Blog Title</th>
+			<th style="text-align:center">Blog Description</th>
+			<th style="text-align:center"></th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<tr th:if="${myBlogs.empty}">
+			<td style="text-align:center" colspan="4">You have not created any blogs:(</td>
+		</tr>
+		
+		<tr th:each="blog : ${myBlogs}">
+			<td>
+			<form th:action="@{/blog/displayEditPage}" th:object="${blogModel}" method="POST">
+				<input type="hidden" th:attr="name='id'" th:value="${blog.id}"/>
+				<button type="submit" style="background-color: blue; color:white">Edit</button>
+			</form>
+			</td>
+			<h5 hidden th:text="${blog.id}">Blank</h5>
+			<td style="text-align:center"><h5 th:text="${blog.title}">Blank</h5></td>
+			<td style="text-align:center"><h5 th:text="${blog.description}">Blank</h5></td>
+			<td>
+			<form th:action="@{/blog/displayRemovePage}" th:object="${blogModel}" method="POST">
+				<input type="hidden" th:attr="name='id'" th:value="${blog.id}"/>
+				<button type="submit" style="background-color:yellow">Remove</button>
+			</form>
+		</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+</body>
+</html>

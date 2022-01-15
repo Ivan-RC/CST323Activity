@@ -1,0 +1,54 @@
+<!--
+Ivan Rivas & Anthony Clayton
+10/23/2021
+CST-339-TR900A
+Milestone 3
+!-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+											layout:decorate="layouts/defaultTemplate">
+<head>
+	<title>Registration Page</title>
+</head>
+
+<body>
+	<div layout:fragment="content">
+	<form action="#" th:action="@{/register/doRegister}" th:object="${registerModel}" method="POST">
+	<div class="mb-3">
+		<label style="font-family:cursive; font:300; padding:10px;">First Name</label>
+  		<input type="text" th:field="*{firstName}" style="height:30px; width:200px; outline:double;" id="firstName">
+  		<h5 style="color:red; font-weight:900" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First name error</h5>
+	</div>
+	
+	<div class="mb-3">
+		<label style="font-family:cursive; font:300; padding:10px;">Last Name</label>
+  		<input type="text" th:field="*{lastName}" style="height:30px; width:200px; outline:double;" id="lastName">
+  		<h5 style="color:red; font-weight:900" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last name error</h5>
+	</div>
+	
+	<div class="mb-3">
+		<label style="font-family:cursive; font:300; padding:10px;">Email</label>
+  		<input type="email" th:field="*{email}" style="height:30px; width:200px; outline:double;" id="email">
+  		<h5 style="color:red; font-weight:900" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email error</h5>
+	</div>
+	
+	<div class="mb-3">
+		<label style="font-family:cursive; font:300; padding:10px;">Username</label>
+  		<input type="text" th:field="*{credentials.username}" style="height:30px; width:200px; outline:double;" id="username">
+  		<h5 style="color:red; font-weight:900" th:if="${#fields.hasErrors('credentials.username')}" th:errors="*{credentials.username}">Username error</h5>
+	</div>
+	
+	<div class="mb-3">
+		<label style="font-family:cursive; font:300; padding:10px;">Password</label>
+  		<input type="password" th:field="*{credentials.password}" style="height:30px; width:200px; outline:double;" id="password">
+  		<h5 style="color:red; font-weight:900" th:if="${#fields.hasErrors('credentials.password')}" th:errors="*{credentials.password}">Password error</h5>
+	</div>	
+	<div align="center">
+		<input type="submit" style="animation: hover; color:navajowhite; background:blue; width: 75px; height: 30px;" value="Submit"/>
+	</div>
+		<div th:if="${#fields.hasErrors('*')}">List of Errors</div>
+		<div th:each="err : ${#fields.errors('*')}">
+			<span style="color:red" th:text="${err}" class="fieldError"></span>
+	</form>
+	</div>
+</body>
+</html>
