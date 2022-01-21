@@ -1,7 +1,6 @@
 package com.gcu.business;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.gcu.data.DataAccessInterface;
@@ -28,23 +27,16 @@ public class RegistrationBusinessService implements RegistrationBusinessInterfac
 		//initialize boolean variable
 		boolean isCreated = false;
 		
-		//encrypt user password
-		String encoded = new BCryptPasswordEncoder().encode(user.getCredentials().getPassword());
-		user.getCredentials().setPassword(encoded);
-		
 		//store int returned by create in rowInserted
 		int rowInserted = service.create(user);
 		
-		//if one result was added
+		//if one result was found
 		if(rowInserted == 1) {
-			//user was registered successfully
+			//user logged in successfully
 			//log.info("Exit RegistrationBusinessService.insert() with one new row");
-			
-			//set isCreated to true and return
 			isCreated = true;
 		}
 		
-		//false if user was not registered successfully
 		//log.info("Exit RegistrationBusinessService.insert() with no new row");
 		return isCreated;
 	}

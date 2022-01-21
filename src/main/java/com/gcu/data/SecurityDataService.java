@@ -54,7 +54,7 @@ public class SecurityDataService implements DataAccessInterface<LoginModel> {
 		//log.info("Entering SecurityDataService.findByUsernameAndPassword()");
 		try {
 			//sql query
-			String search = "SELECT * FROM `users` WHERE `USERNAME` = ? AND `PASSWORD` = ?";
+			String search = "SELECT * FROM `user` WHERE `USERNAME` = ? AND `PASSWORD` = ?";
 			
 			//hold user found in srs
 			SqlRowSet srs = jdbcTemplateObject.queryForRowSet(search, t.getUsername(), t.getPassword());
@@ -108,7 +108,7 @@ public class SecurityDataService implements DataAccessInterface<LoginModel> {
 		LoginModel user = new LoginModel();
 		try {
 			//sql query
-			String search = "SELECT * FROM `users` WHERE `USERNAME` = ?";
+			String search = "SELECT * FROM `user` WHERE `USERNAME` = ?";
 			
 			//hold user found srs
 			SqlRowSet srs = jdbcTemplateObject.queryForRowSet(search, username);

@@ -14,7 +14,7 @@ public class BlogModel {
 	private String title;
 	
 	@NotNull(message="Description is a required field")
-    @Size(min=5, max=45, message="Description must be between 5 and 45 characters")
+    @Size(min=5, max=500, message="Description must be between 5 and 500 characters")
 	private String description;
 	
 	//used to associate a user with a blog they have created

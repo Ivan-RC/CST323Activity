@@ -41,7 +41,7 @@ public class BlogDataService implements DataAccessInterface<BlogModel> {
 		//log.info("Entering BlogDataService.findById()");
 		
 		//setting the statement
-		String sql = "SELECT * FROM POSTS WHERE `POST_ID` = ?";
+		String sql = "SELECT * FROM post WHERE `POST_ID` = ?";
 		
 		//initialize a new blog
 		BlogModel myBlog = null;
@@ -78,7 +78,7 @@ public class BlogDataService implements DataAccessInterface<BlogModel> {
 		//log.info("Entering BlogDataService.findAll()");
 		
 		//setting the statement
-		String sql = "SELECT * FROM POSTS";
+		String sql = "SELECT * FROM post";
 		
 		//list to store all the retrieved blogs
 		List<BlogModel> blogs = new ArrayList<BlogModel>();
@@ -115,7 +115,7 @@ public class BlogDataService implements DataAccessInterface<BlogModel> {
 		//log.info("Entering BlogDataService.findAllById()");
 		
 		//setting the statement
-		String sql = "SELECT * FROM POSTS WHERE `USER_ID` = ?";
+		String sql = "SELECT * FROM post WHERE `USER_ID` = ?";
 		
 		//list to store all the retrieved blogs
 		List<BlogModel> myBlogs = new ArrayList<BlogModel>();
@@ -157,7 +157,7 @@ public class BlogDataService implements DataAccessInterface<BlogModel> {
 		//log.info("Entering BlogDataService.create()");
 		try {
 			//setting up the sql statement
-			String sql = "INSERT INTO posts(POST_TITLE, POST_TEXT, USER_ID) VALUES(?,?,?)";
+			String sql = "INSERT INTO post(POST_TITLE, POST_TEXT, USER_ID) VALUES(?,?,?)";
 			
 			//store number rows inserted in variable 
 			int rowInserted = jdbcTemplateObject.update(sql, blog.getTitle(), blog.getDescription(), blog.getUserId());
@@ -191,7 +191,7 @@ public class BlogDataService implements DataAccessInterface<BlogModel> {
 
 		try {
 			//sql statement
-			String sql = "UPDATE `posts` SET `POST_TITLE` = ?, `POST_TEXT` = ? WHERE POST_ID = ?";
+			String sql = "UPDATE `post` SET `POST_TITLE` = ?, `POST_TEXT` = ? WHERE POST_ID = ?";
 			
 			//holds number of rows affected
 			int rowInserted = jdbcTemplateObject.update(sql, t.getTitle(), t.getDescription(), t.getId());
@@ -223,7 +223,7 @@ public class BlogDataService implements DataAccessInterface<BlogModel> {
 
 		try {
 			//Sql statement to delete 
-			String sql = "DELETE FROM `posts` WHERE `POST_ID` = ?";
+			String sql = "DELETE FROM `post` WHERE `POST_ID` = ?";
 			
 			//holds number of rows affected
 			int rowInserted = jdbcTemplateObject.update(sql, t.getId());

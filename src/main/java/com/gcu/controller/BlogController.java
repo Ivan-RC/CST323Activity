@@ -6,7 +6,6 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -178,7 +177,7 @@ public class BlogController {
 	 * @return String (DisplayMyBlogs)
 	 */
 	@GetMapping("/viewMine")
-	public String viewMine(@Valid BlogModel blogModel, BindingResult bindingResult, Model model, Authentication auth) {
+	public String viewMine(@Valid BlogModel blogModel, BindingResult bindingResult, Model model) {
 		//log.info("Enter BlogController.viewMine()");
 
 		// store users id which is in the session

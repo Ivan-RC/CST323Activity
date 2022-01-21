@@ -10,16 +10,15 @@ Milestone 3
 	<title>Login Page</title>
 </head>
 <body>
-	<div layout:fragment="content">
-		<div th:if="${param.error}">
-			Inavlid name and password
-		</div>
-		<form action="#" th:action="@{/login/}" th:object="${loginModel}" method="POST">
+		
+	<div layout:fragment="content">	
+		<form action="#" th:action="@{/login/doLogin}" th:object="${loginModel}" method="POST">
 		<div class="mb-3">
 		<label style="font-family:cursive; font:300; padding:10px;">Username</label>
   		<input type="text" th:field="*{username}" style="height:30px; width:200px; outline:double;" id="username">
   		<h5 style="color:red; font-weight:900" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username error</h5>
 	</div>
+	
 	<div class="mb-3">
 		<label style="font-family:cursive; font:300; padding:10px;">Password</label>
   		<input type="password" th:field="*{password}" style="height:30px; width:200px; outline:double;" id="password">

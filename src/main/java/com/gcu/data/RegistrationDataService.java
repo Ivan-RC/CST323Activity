@@ -62,11 +62,11 @@ public class RegistrationDataService implements DataAccessInterface<RegisterMode
 		//log.info("Entering RegistrationDataService.create()");
 		try {
 			//sql statement 
-			String sql = "INSERT INTO users(USERNAME, PASSWORD, FIRSTNAME, LASTNAME, EMAIL, ROLE) VALUES(?,?,?,?,?,?)";
+			String sql = "INSERT INTO user(USERNAME, PASSWORD, EMAIL, FIRSTNAME, LASTNAME) VALUES(?,?,?,?,?)";
 			
 			//hold number of rows inserted
-			int rowInserted = jdbcTemplateObject.update(sql, user.getCredentials().getUsername(), user.getCredentials().getPassword(),
-																user.getFirstName(), user.getLastName(), user.getEmail(), null);
+			int rowInserted = jdbcTemplateObject.update(sql, user.getCredentials().getUsername(), user.getCredentials().getPassword(), user.getEmail(),
+																user.getFirstName(), user.getLastName());
 			if(rowInserted == 0) {
 				//if no row was inserted, return 0
 				//log.info("Exit RegistrationDataService.create() with no new rows");

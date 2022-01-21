@@ -6,13 +6,6 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.gcu.data.DataAccessInterface;
@@ -22,7 +15,7 @@ import com.gcu.model.LoginModel;
 
 //This is where all business logic regarding security will go
 @Service
-public class SecurityBusinessService implements UserDetailsService{
+public class SecurityBusinessService implements SecurityBusinessInterface{
 	
 	@Autowired
 	private DataAccessInterface<LoginModel> service;
@@ -54,27 +47,5 @@ public class SecurityBusinessService implements UserDetailsService{
 		//user did not login successfully
 		//log.info("Exit SecurityBusinessService.authenticate() with unsuccessful login");
 		return isAuthenticated;
-	}
-
-	/**
-	 * This method is used to find the user by their username
-	 * @param username - used to find user by username
-	 * @return UserDetails (user if found, exception if not found
-	 */
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		LoginModel user = service.findByUsername(username);
-		if(user != null) {
-			List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-			authorities.add(new SimpleGrantedAuthority("USER"));
-			String encoded = new BCryptPasswordEncoder().encode(user.getPassword());
-			session.setAttribute("USER_ID", user.getUserId());
-			System.out.println(encoded);
-			
-			return new User(user.getUsername(), user.getPassword(), authorities);
-			
-		}else {
-			throw new UsernameNotFoundException("Username not found");
-		}
 	}
 }
