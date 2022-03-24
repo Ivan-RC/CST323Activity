@@ -57,11 +57,16 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
         <!-- Lombok stuff -->
-        <!-- <dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
-        </dependency> -->
+        </dependency>
+        <!-- logging stuff -->
+        <dependency>
+        	<groupId>org.springframework.boot</groupId>
+        	<artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
 	</dependencies>	
 	<build>
 	<finalName>app</finalName>
