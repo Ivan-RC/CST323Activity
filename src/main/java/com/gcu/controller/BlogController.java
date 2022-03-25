@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gcu.business.BlogBusinessInterface;
 import com.gcu.model.BlogModel;
-
-//import lombok.extern.slf4j.Slf4j;
+import lombok.extern.slf4j.Slf4j;
 
 //This controller will be used to manage blogs
+@Slf4j
 @Controller
 @RequestMapping("/blog")
 public class BlogController {
@@ -101,7 +101,7 @@ public class BlogController {
 	 **/
 	@PostMapping("/doPost")
 	public String doPost(@Valid BlogModel blogModel, BindingResult bindingResult, Model model) {
-		//log.info("Enter BlogController.doPost()");
+		log.info("Enter BlogController.doPost()");
 
 		// if there were binding errors, or user was not registered successfully
 		if (bindingResult.hasErrors()) {
@@ -129,7 +129,7 @@ public class BlogController {
 			// return register view
 			model.addAttribute("title", "Register Form");
 
-			//log.info("Exit RegisterController.doRegister() with unsuccessful registration");
+			log.info("Exit RegisterController.doRegister() with unsuccessful registration");
 			return "CreateBlog";
 		}
 
