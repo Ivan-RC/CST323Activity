@@ -1,0 +1,33 @@
+<div th:fragment="header">
+	<div align="center">
+		<h1>Welcome To Our CST-339 Application</h1>
+	</div>
+	
+	
+<body>
+	<div class="container-fluid">
+	<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+   			<div class="navbar-header">
+   				<a class="navbar-brand" href="/">Index</a>
+   				<a class="navbar-brand" href="/register/">Register</a>
+   				<a class="navbar-brand" href="/login/">Login</a>
+   				<a class="navbar-brand" href="/blog/">Create Blog</a>
+   				<a class="navbar-brand" href="/blog/viewAll">All Blogs</a>
+   				<a class="navbar-brand" href="/blog/viewMine">My Blogs</a>
+   				
+   			</div>
+   			<div id="navbarCollapse" class="navbar-header">
+   				<ul class="nav navbar-nav navbard-right">
+   					<li>
+   						<form th:action="@{/logout}" method="POST">
+   							<input type="submit" value="Logout"/>
+   						</form>
+   					</li>
+   			</div>
+   	</nav>
+   	</div>
+</div>
+      	<div th:fragment="footer">
+    		<h5 style="color:purple; text-align:center; position:sticky; position:fixed; bottom:0; width:100%;">COPYRIGHT 2021 CST339Application</h5>
+    	</div>
+</body>

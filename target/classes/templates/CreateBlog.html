@@ -1,0 +1,39 @@
+<!--
+Ivan Rivas & Anthony Clayton
+10/23/2021
+CST-339-TR900A
+Milestone 3
+!-->
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+											layout:decorate="layouts/defaultTemplate">
+<head>
+	<title>Create Blog Page</title>
+</head>
+<body>
+		
+	<div layout:fragment="content">	
+		<form action="#" th:action="@{/blog/doPost}" th:object="${blogModel}" method="POST">
+			<div class="mb-3">
+				<label style="font-family:cursive; font:300; padding:10px;">Title</label>
+		  		<input type="text" th:field="*{title}" style="height:30px; width:200px; outline:double;" id="title">
+		  		<h5 style="color:red; font-weight:900" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Title error</h5>
+			</div>
+			
+			<div class="mb-3">
+				<label style="font-family:cursive; font:300; padding:10px;">Description</label>
+		  		<textarea th:field="*{description}" style="height:30px; width:200px; outline:double;" id="description"></textarea>
+		  		<h5 style="color:red; font-weight:900" th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Description error</h5>
+			</div>	
+			<div align="center">
+				<input type="submit" style="animation: hover; color:navajowhite; background:blue; width: 75px; height: 30px;" value="Submit"/>
+			</div>
+			
+			<div th:if="${#fields.hasErrors('*')}">List of Errors</div>
+			<div th:each="err : ${#fields.errors('*')}">
+				<span style="color:red" th:text="${err}" class="fieldError"></span>
+			</div>	
+		</form>
+	</div>
+	</body>
+</html>

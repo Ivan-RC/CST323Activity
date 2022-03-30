@@ -1,0 +1,23 @@
+<!--
+Ivan Rivas & Anthony Clayton
+10/23/2021
+CST-339-TR900A
+Milestone 3
+!-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+											layout:decorate="layouts/defaultTemplate">
+
+	<head>
+		<title>Home Page</title>
+	</head>
+	<body>
+	<div layout:fragment="content">
+	
+	<blockquote class="blockquote">
+		<p class="lead">
+			Hello, <text th:text="${loginModel.username}">Default Text</text>, feel free to create your first blog. We hope you enjoy!
+		</p>
+		</blockquote>
+	</div>
+	</body>
+</html>
