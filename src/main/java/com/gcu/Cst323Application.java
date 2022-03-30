@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Cst323Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Cst323ActivityApplication.class, args);
+		SpringApplication.run(Cst323Application.class, args);
 	}
 
 }
